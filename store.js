@@ -5,9 +5,11 @@ class Artikal {
     this.id = id;
     this.naziv = naziv;
     this.cena = cena;
-    this.dostupan = dostupan; // true ili false
+    this.dostupan = dostupan; 
   }
 }
+//Napisana klasa za artikal------------------------------------
+
 
 class Prodavnica {
   constructor(naziv, artikli) {
@@ -87,6 +89,81 @@ function ispisiPoruku(kupac, prodavnica, potrosenIznos) {
     console.log(`${kupac.ime}, nemate dovoljno sredstava na racunu!`);
   }
 }
+//dodati artiki---------------------------------------
+
+let monitor = new Artikal(1, "Monitor", 165, true);
+let tv = new Artikal(2, "TV", 650, false);
+let mis = new Artikal(3, "Mis", 20, true);
+
+let artikli = [monitor, tv, mis];
+
+
+let tabela = document.querySelector("#artikli");
+
+tabela.style.borderCollapse = "collapse";
+
+let zaglavlja = document.querySelectorAll("#artikli th");
+
+// 
+
+if (zaglavlja.length === 4) {
+  zaglavlja[0].textContent = "Br";
+  zaglavlja[1].textContent = "Naziv";
+  zaglavlja[2].textContent = "Cena($)";
+  zaglavlja[3].textContent = "Dostupan";
+}
+
+for (let th of zaglavlja) {
+  th.style.border = "1px solid black";
+  th.style.textAlign = "center";
+  th.style.padding = "4px 8px";
+}
+
+
+
+for (let artikal of artikli) {
+  
+  let tr = document.createElement("tr");
+
+ 
+  let tdBr = document.createElement("td");
+  let tdNaziv = document.createElement("td");
+  let tdCena = document.createElement("td");
+  let tdDostupan = document.createElement("td");
+
+
+  tdBr.style.border = "1px solid black";
+  tdNaziv.style.border = "1px solid black";
+  tdCena.style.border = "1px solid black";
+  tdDostupan.style.border = "1px solid black";
+ 
+  tdBr.textContent = artikal.id;
+  tdNaziv.textContent = artikal.naziv;
+  tdCena.textContent = artikal.cena ;
+
+  
+  if (artikal.dostupan) {
+    tdDostupan.textContent = "DA";
+  } else {
+    tdDostupan.textContent = "NE";
+  }
+
+ 
+  if (!artikal.dostupan) {
+    tr.style.backgroundColor = "#d89197";
+  }
+
+  tr.appendChild(tdBr);
+  tr.appendChild(tdNaziv);
+  tr.appendChild(tdCena);
+  tr.appendChild(tdDostupan);
+
+
+  tabela.appendChild(tr);
+}
+
+//------------------------------------------------------------------------------- kraj :)
+
 
 
 
