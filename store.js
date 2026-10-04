@@ -104,7 +104,7 @@ tabela.style.borderCollapse = "collapse";
 
 let zaglavlja = document.querySelectorAll("#artikli th");
 
-// 
+
 
 if (zaglavlja.length === 4) {
   zaglavlja[0].textContent = "Br";
